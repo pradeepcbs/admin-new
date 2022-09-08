@@ -1,0 +1,62 @@
+<div class="page-header">
+  <h3 class="page-title">Item List</h3>
+</div>
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Store Name</th>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>In-Stock</th>
+                <th>Stock Amount</th>
+                <th>Price</th>
+                <th>Barcode</th>
+                <th>Category</th>
+                <th>Sub-category</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items; let i = index">
+                <td class="py-1">{{ item?.storeID?.name }}</td>
+                <td>{{ item?.name }}</td>
+                <td>{{ item?.sku }}</td>
+                <td>{{ item?.inStock ? "Yes" : "No" }}</td>
+                <td>{{ item?.inventory?.stock }}</td>
+                <td>{{ item?.sellPrice | currency }}</td>
+                <td>{{ item?.barcode }}</td>
+                <td>{{ item?.category?.name }}</td>
+                <td>{{ item?.subcategory?.name }}</td>
+                <td>{{ item?.type }}</td>
+                <td>{{ item?.description }}</td>
+                <td>{{ item?.active ? "Active" : "Inactive" }}</td>
+                <td>
+                  <button
+                    class="btn btn-gradient-primary mr-2"
+                    [routerLink]="'/items/edit-item/' + item._id"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-gradient-primary mr-2"
+                    (click)="deleteItem(item._id, i)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

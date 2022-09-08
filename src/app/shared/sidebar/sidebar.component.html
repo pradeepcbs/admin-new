@@ -1,0 +1,656 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <!-- <li class="nav-item nav-profile">
+      <a href="javascript:;" class="nav-link">
+        <div class="nav-profile-image">
+          <img src="assets/images/faces/face1.jpg" alt="profile" />
+          <span class="login-status online"></span>
+        </div>
+        <div class="nav-profile-text">
+          <span class="font-weight-bold mb-2">David Grey. H</span>
+          <span class="text-secondary text-small">Project Manager</span>
+        </div>
+        <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+      </a>
+    </li> -->
+    <li class="nav-item" [ngClass]="{ active: dashboard.isActive }">
+      <a
+        class="nav-link"
+        routerLink="/dashboard"
+        routerLinkActive
+        #dashboard="routerLinkActive"
+      >
+        <span class="menu-title">Dashboard</span>
+        <i class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active: adminPage.isActive || addAdmin.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="samplePagesCollapsed = !samplePagesCollapsed"
+        [attr.aria-expanded]="samplePagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Admin Users</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!samplePagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="admin-user-page/add-admin"
+              routerLinkActive="active"
+              #addAdmin="routerLinkActive"
+            >
+              Add Admin
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="admin-user-page/admin-list"
+              routerLinkActive="active"
+              #adminPage="routerLinkActive"
+            >
+              Admin Users
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active: customerPage.isActive || addCustomer.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="customerPagesCollapsed = !customerPagesCollapsed"
+        [attr.aria-expanded]="customerPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Customers</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!customerPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="customer/add-customer"
+              routerLinkActive="active"
+              #addCustomer="routerLinkActive"
+            >
+              Add Customer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="customer/customer-list"
+              routerLinkActive="active"
+              #customerPage="routerLinkActive"
+            >
+              Customer List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active:
+          storePage.isActive ||
+          addStore.isActive ||
+          addStoreUserPage.isActive ||
+          storeUserPage.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="storePagesCollapsed = !storePagesCollapsed"
+        [attr.aria-expanded]="storePagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Stores</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!storePagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="stores/add-store"
+              routerLinkActive="active"
+              #addStore="routerLinkActive"
+            >
+              Add Store
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="stores/store-list"
+              routerLinkActive="active"
+              #storePage="routerLinkActive"
+            >
+              Store List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="stores/store-add-user"
+              routerLinkActive="active"
+              #addStoreUserPage="routerLinkActive"
+            >
+              Add Store User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="stores/store-users-list"
+              routerLinkActive="active"
+              #storeUserPage="routerLinkActive"
+            >
+              Store User List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active:
+          addCategory.isActive ||
+          categoryList.isActive ||
+          addSubCategory.isActive ||
+          subCategoryList.isActive ||
+          subCategoryList.isActive ||
+          addItem.isActive ||
+          itemList.isActive ||
+          addAddon.isActive ||
+          addonList.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="itemPagesCollapsed = !itemPagesCollapsed"
+        [attr.aria-expanded]="itemPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Items Module</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!itemPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/add-category"
+              routerLinkActive="active"
+              #addCategory="routerLinkActive"
+            >
+              Add Category
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/category-list"
+              routerLinkActive="active"
+              #categoryList="routerLinkActive"
+            >
+              Category List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/add-sub-category"
+              routerLinkActive="active"
+              #addSubCategory="routerLinkActive"
+            >
+              Add SubCategory
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/sub-category-list"
+              routerLinkActive="active"
+              #subCategoryList="routerLinkActive"
+            >
+              SubCategory List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/add-item"
+              routerLinkActive="active"
+              #addItem="routerLinkActive"
+            >
+              Add Items
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/item-list"
+              routerLinkActive="active"
+              #itemList="routerLinkActive"
+            >
+              Item List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/add-addon"
+              routerLinkActive="active"
+              #addAddon="routerLinkActive"
+            >
+              Add AddOn
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="items/addon-list"
+              routerLinkActive="active"
+              #addonList="routerLinkActive"
+            >
+              AddOn List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active: packageListPage.isActive || addPackage.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="packagePagesCollapsed = !packagePagesCollapsed"
+        [attr.aria-expanded]="packagePagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Packages</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!packagePagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/add-course"
+              routerLinkActive="active"
+              #addCourse="routerLinkActive"
+            >
+              Add Course
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/course-list"
+              routerLinkActive="active"
+              #courseListPage="routerLinkActive"
+            >
+              Course List
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/add-package"
+              routerLinkActive="active"
+              #addPackage="routerLinkActive"
+            >
+              Add Package
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/package-list"
+              routerLinkActive="active"
+              #packageListPage="routerLinkActive"
+            >
+              Package List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active:
+          eventListPage.isActive ||
+          addEvent.isActive ||
+          minDepositPage.isActive ||
+          minDepositPageList.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="eventPagesCollapsed = !eventPagesCollapsed"
+        [attr.aria-expanded]="eventPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Party</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!eventPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="event/add-event"
+              routerLinkActive="active"
+              #addEvent="routerLinkActive"
+            >
+              Add Party
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="event/event-list"
+              routerLinkActive="active"
+              #eventListPage="routerLinkActive"
+            >
+              Party List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="event/min-deposit"
+              routerLinkActive="active"
+              #minDepositPage="routerLinkActive"
+            >
+              Minimum Deposit
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="event/min-deposit-list"
+              routerLinkActive="active"
+              #minDepositPageList="routerLinkActive"
+            >
+              Minimum Deposit List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active: taxListPage.isActive || addTax.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="taxPagesCollapsed = !taxPagesCollapsed"
+        [attr.aria-expanded]="taxPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Tax</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!taxPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/add-tax"
+              routerLinkActive="active"
+              #addTax="routerLinkActive"
+            >
+              Add Tax
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/tax-list"
+              routerLinkActive="active"
+              #taxListPage="routerLinkActive"
+            >
+              Tax List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active: gratuityListPage.isActive || addGratuity.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="gratuityPagesCollapsed = !gratuityPagesCollapsed"
+        [attr.aria-expanded]="gratuityPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Tips & Gratuity</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!gratuityPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/add-gratuity"
+              routerLinkActive="active"
+              #addGratuity="routerLinkActive"
+            >
+              Add Gratuity
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="packages/gratuity-list"
+              routerLinkActive="active"
+              #gratuityListPage="routerLinkActive"
+            >
+              Gratuity List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active:
+          offerListPage.isActive ||
+          addOffer.isActive ||
+          addCoupon.isActive ||
+          couponListPage.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="offerPagesCollapsed = !offerPagesCollapsed"
+        [attr.aria-expanded]="offerPagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Offer</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!offerPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="offers/add-offer"
+              routerLinkActive="active"
+              #addOffer="routerLinkActive"
+            >
+              Add Offer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="offers/offer-list"
+              routerLinkActive="active"
+              #offerListPage="routerLinkActive"
+            >
+              Offer List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="offers/add-coupon"
+              routerLinkActive="active"
+              #addCoupon="routerLinkActive"
+            >
+              Add Coupon
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="offers/coupon-list"
+              routerLinkActive="active"
+              #couponListPage="routerLinkActive"
+            >
+              Coupon List
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- <li class="nav-item" [ngClass]="{ active: forms.isActive }">
+      <a
+        class="nav-link"
+        routerLink="forms/basic-elements"
+        routerLinkActive
+        #forms="routerLinkActive"
+      >
+        <span class="menu-title">Form elements</span>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item" [ngClass]="{ active: tables.isActive }">
+      <a
+        class="nav-link"
+        routerLink="tables/basic-table"
+        routerLinkActive
+        #tables="routerLinkActive"
+      >
+        <span class="menu-title">Tables</span>
+        <i class="mdi mdi-table-large menu-icon"></i>
+      </a>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{
+        active:
+          blankPage.isActive ||
+          login.isActive ||
+          register.isActive ||
+          error404.isActive ||
+          error500.isActive
+      }"
+    >
+      <a
+        class="nav-link"
+        (click)="samplePagesCollapsed = !samplePagesCollapsed"
+        [attr.aria-expanded]="samplePagesCollapsed"
+        aria-controls="auth"
+      >
+        <span class="menu-title">Sample Pages</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth" [ngbCollapse]="!samplePagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="general-pages/blank-page"
+              routerLinkActive="active"
+              #blankPage="routerLinkActive"
+            >
+              Blank Page
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="user-pages/login"
+              routerLinkActive="active"
+              #login="routerLinkActive"
+            >
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="user-pages/register"
+              routerLinkActive="active"
+              #register="routerLinkActive"
+            >
+              Register
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="error-pages/404"
+              routerLinkActive="active"
+              #error404="routerLinkActive"
+            >
+              404
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="error-pages/500"
+              routerLinkActive="active"
+              #error500="routerLinkActive"
+            >
+              500
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li> -->
+  </ul>
+</nav>
